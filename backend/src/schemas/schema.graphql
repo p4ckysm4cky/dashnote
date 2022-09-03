@@ -1,0 +1,21 @@
+type Query {
+    "Returns all quiz"
+    allQuiz: [Quiz!]!
+    "Returns a specific quiz"
+    quiz: Quiz!
+}
+
+type Quiz {
+    id: ID!
+    name: String!
+    description: String!
+    cards: [Card!]!
+}
+
+type Card {
+    id: ID!
+    "Front of the card"
+    term: String!
+    "Back of the card"
+    answer: String!
+}

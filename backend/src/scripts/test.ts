@@ -14,7 +14,7 @@ function testNewQuiz(name: string, description: string) {
 
 function testFetchAllQuiz() {
     fetchAllQuiz().then((array) => {
-        console.log(array);
+        array.forEach((element) => console.log(element.cards));
     });
 }
 
@@ -39,4 +39,4 @@ mongoose
         console.log('error connecting to MongoDB:', error.message);
     });
 
-testNewCard('63143a064af5a62491327ab1', 'Card term', 'Card description');
+testFetchAllQuiz();

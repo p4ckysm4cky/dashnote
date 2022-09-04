@@ -1,7 +1,8 @@
 import { Quiz, IQuiz } from '../models/quiz';
 import { HydratedDocument } from 'mongoose';
-import { quizToSchema } from '../mappers.ts/quizMapper';
+import { quizToSchema } from '../mappers/quizMapper';
 import { Quiz as QuizSchema } from '../resolvers/resolvers-types';
+import { ICard } from '../models/card';
 
 export const newQuiz = async (name: string, description: string) => {
     const aQuiz: HydratedDocument<IQuiz> = new Quiz({
@@ -14,8 +15,10 @@ export const newQuiz = async (name: string, description: string) => {
 };
 
 export const fetchAllQuiz = async (): Promise<QuizSchema[]> => {
-    const quizArray = await Quiz.find({});
-    const returnArray = quizArray.map((quiz) => quizToSchema(quiz));
+    const quizArray = await Quiz.find({}).populate('cards');
+    const returnArray = quizArray.map((quiz) => {
+        return quizToSchema(quiz, quiz.cards as unknown as ICard[]);
+    });
     return returnArray;
 };
 

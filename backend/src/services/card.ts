@@ -1,7 +1,7 @@
 import { Card, ICard } from '../models/card';
 import { Quiz } from '../models/quiz';
 import { HydratedDocument } from 'mongoose';
-import { cardToSchema } from '../mappers.ts/cardMapper';
+import { cardToSchema } from '../mappers/cardMapper';
 import { Card as CardSchema } from '../resolvers/resolvers-types';
 
 export const newCard = async (

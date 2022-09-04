@@ -28,3 +28,7 @@ export const fetchSpecificQuiz = async (id: string) => {
         ? quizToSchema(aQuiz, aQuiz.cards as unknown as ICard[])
         : null;
 };
+
+export const deleteQuiz = async (id: string) => {
+    await Quiz.deleteOne({ _id: id });
+};

@@ -68,7 +68,7 @@ export type Query = {
 
 
 export type QueryQuizArgs = {
-  id: Scalars['ID'];
+  quizId: Scalars['ID'];
 };
 
 export type Quiz = {
@@ -185,7 +185,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   allQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType>;
-  quiz?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<QueryQuizArgs, 'id'>>;
+  quiz?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<QueryQuizArgs, 'quizId'>>;
 }>;
 
 export type QuizResolvers<ContextType = any, ParentType extends ResolversParentTypes['Quiz'] = ResolversParentTypes['Quiz']> = ResolversObject<{

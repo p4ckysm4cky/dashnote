@@ -1,5 +1,10 @@
 import { Resolvers } from './resolvers-types';
-import { fetchAllQuiz, fetchSpecificQuiz, newQuiz } from '../services/quiz';
+import {
+    fetchAllQuiz,
+    fetchSpecificQuiz,
+    newQuiz,
+    deleteQuiz,
+} from '../services/quiz';
 import { newCard } from '../services/card';
 
 export const resolvers: Resolvers = {
@@ -7,8 +12,8 @@ export const resolvers: Resolvers = {
         allQuiz: async () => {
             return await fetchAllQuiz();
         },
-        quiz: async (_, { id }) => {
-            return await fetchSpecificQuiz(id);
+        quiz: async (_, { quizId }) => {
+            return await fetchSpecificQuiz(quizId);
         },
     },
     Mutation: {
@@ -19,6 +24,10 @@ export const resolvers: Resolvers = {
         addCard: async (_, { quizId, term, answer }) => {
             await newCard(quizId, term, answer);
             return await fetchSpecificQuiz(quizId);
+        },
+        deleteQuiz: async (_, { quizId }) => {
+            await deleteQuiz(quizId);
+            return await fetchAllQuiz();
         },
     },
 };

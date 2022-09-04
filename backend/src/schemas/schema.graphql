@@ -2,7 +2,7 @@ type Query {
     "Returns all quiz"
     allQuiz: [Quiz!]!
     "Returns a specific quiz"
-    quiz(id: ID!): Quiz
+    quiz(quizId: ID!): Quiz
 }
 
 type Mutation {

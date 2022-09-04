@@ -5,7 +5,7 @@ import {
     newQuiz,
     deleteQuiz,
 } from '../services/quiz';
-import { newCard, deleteCard } from '../services/card';
+import { newCard, deleteCard, editCard } from '../services/card';
 
 export const resolvers: Resolvers = {
     Query: {
@@ -31,7 +31,19 @@ export const resolvers: Resolvers = {
         },
         deleteCard: async (_, { cardId }) => {
             const quizId = await deleteCard(cardId);
-            return await fetchSpecificQuiz(quizId);
+            if (quizId) {
+                return await fetchSpecificQuiz(quizId);
+            }
+            return null;
+        },
+        editCard: async (_, { cardId, term, answer }) => {
+            term = term ? term : undefined;
+            answer = answer ? answer : undefined;
+            const quizId = await editCard(cardId, term, answer);
+            if (quizId) {
+                return await fetchSpecificQuiz(quizId);
+            }
+            return null;
         },
     },
 };

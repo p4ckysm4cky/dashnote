@@ -2,7 +2,8 @@ import { Quiz, IQuiz } from '../models/quiz';
 import { HydratedDocument } from 'mongoose';
 import { quizToSchema } from '../mappers/quizMapper';
 import { Quiz as QuizSchema } from '../resolvers/resolvers-types';
-import { ICard } from '../models/card';
+import { ICard, Card } from '../models/card';
+import { deleteCard } from './card';
 
 export const newQuiz = async (name: string, description: string) => {
     const aQuiz: HydratedDocument<IQuiz> = new Quiz({
@@ -30,5 +31,12 @@ export const fetchSpecificQuiz = async (id: string) => {
 };
 
 export const deleteQuiz = async (id: string) => {
+    const aQuiz = await Quiz.findById(id);
+    if (!aQuiz) {
+        return null;
+    }
+    aQuiz.cards.forEach(async (id) => {
+        await Card.deleteOne({ _id: id.toString() });
+    });
     await Quiz.deleteOne({ _id: id });
 };

@@ -27,7 +27,33 @@ export const newCard = async (
 
 export const deleteCard = async (cardId: string) => {
     const aCard = await Card.findById(cardId);
-    const quizId = aCard!.quiz;
+    if (!aCard) {
+        return null;
+    }
+    const quizId = aCard.quiz;
+    const aQuiz = await Quiz.findById(quizId);
+    if (!aQuiz) {
+        return null;
+    }
+    aQuiz.cards = aQuiz.cards.filter((id) => {
+        return id.toString() !== cardId;
+    });
+    await aQuiz.save();
     await Card.deleteOne({ _id: cardId });
     return quizId.toString();
+};
+
+export const editCard = async (
+    cardId: string,
+    term?: string,
+    answer?: string,
+) => {
+    const aCard = await Card.findById(cardId);
+    if (!aCard) {
+        return null;
+    }
+    aCard.term = term ? term : aCard.term;
+    aCard.answer = answer ? answer : aCard.answer;
+    aCard.save();
+    return aCard.quiz.toString();
 };

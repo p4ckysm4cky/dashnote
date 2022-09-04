@@ -14,6 +14,7 @@ type Mutation {
     deleteQuiz(quizId: ID!): [Quiz!]!
     "Delete card"
     deleteCard(cardId: ID!): Quiz
+    editCard(cardId: ID!, term: String, answer: String): Quiz
 }
 
 type Quiz {

@@ -31,6 +31,7 @@ export type Mutation = {
   deleteCard?: Maybe<Quiz>;
   /** Delete quiz */
   deleteQuiz: Array<Quiz>;
+  editCard?: Maybe<Quiz>;
   /** Creates in new quiz with empty array */
   newQuiz: Array<Quiz>;
 };
@@ -50,6 +51,13 @@ export type MutationDeleteCardArgs = {
 
 export type MutationDeleteQuizArgs = {
   quizId: Scalars['ID'];
+};
+
+
+export type MutationEditCardArgs = {
+  answer?: InputMaybe<Scalars['String']>;
+  cardId: Scalars['ID'];
+  term?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -180,6 +188,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   addCard?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationAddCardArgs, 'answer' | 'quizId' | 'term'>>;
   deleteCard?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationDeleteCardArgs, 'cardId'>>;
   deleteQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationDeleteQuizArgs, 'quizId'>>;
+  editCard?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationEditCardArgs, 'cardId'>>;
   newQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationNewQuizArgs, 'description' | 'name'>>;
 }>;
 

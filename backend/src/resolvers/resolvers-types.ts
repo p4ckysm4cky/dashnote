@@ -28,7 +28,7 @@ export type Mutation = {
   /** Adds card to a quiz */
   addCard?: Maybe<Quiz>;
   /** Delete card */
-  deleteCard: Quiz;
+  deleteCard?: Maybe<Quiz>;
   /** Delete quiz */
   deleteQuiz: Array<Quiz>;
   /** Creates in new quiz with empty array */
@@ -178,7 +178,7 @@ export type CardResolvers<ContextType = any, ParentType extends ResolversParentT
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   addCard?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationAddCardArgs, 'answer' | 'quizId' | 'term'>>;
-  deleteCard?: Resolver<ResolversTypes['Quiz'], ParentType, ContextType, RequireFields<MutationDeleteCardArgs, 'cardId'>>;
+  deleteCard?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationDeleteCardArgs, 'cardId'>>;
   deleteQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationDeleteQuizArgs, 'quizId'>>;
   newQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationNewQuizArgs, 'description' | 'name'>>;
 }>;

@@ -24,3 +24,10 @@ export const newCard = async (
     await quiz.save();
     return cardToSchema(savedCard);
 };
+
+export const deleteCard = async (cardId: string) => {
+    const aCard = await Card.findById(cardId);
+    const quizId = aCard!.quiz;
+    await Card.deleteOne({ _id: cardId });
+    return quizId.toString();
+};

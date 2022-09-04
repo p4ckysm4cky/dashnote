@@ -13,7 +13,7 @@ type Mutation {
     "Delete quiz"
     deleteQuiz(quizId: ID!): [Quiz!]!
     "Delete card"
-    deleteCard(cardId: ID!): Quiz!
+    deleteCard(cardId: ID!): Quiz
 }
 
 type Quiz {

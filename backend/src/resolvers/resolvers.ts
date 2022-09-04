@@ -5,7 +5,7 @@ import {
     newQuiz,
     deleteQuiz,
 } from '../services/quiz';
-import { newCard } from '../services/card';
+import { newCard, deleteCard } from '../services/card';
 
 export const resolvers: Resolvers = {
     Query: {
@@ -28,6 +28,10 @@ export const resolvers: Resolvers = {
         deleteQuiz: async (_, { quizId }) => {
             await deleteQuiz(quizId);
             return await fetchAllQuiz();
+        },
+        deleteCard: async (_, { cardId }) => {
+            const quizId = await deleteCard(cardId);
+            return await fetchSpecificQuiz(quizId);
         },
     },
 };

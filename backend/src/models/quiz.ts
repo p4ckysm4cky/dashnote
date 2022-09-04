@@ -1,14 +1,12 @@
-import mongoose, { Schema, model, Types } from 'mongoose';
+import { Document, Schema, model, Types } from 'mongoose';
 
-export interface IQuiz extends mongoose.Document {
+export interface IQuiz extends Document {
     name: string;
     description: string;
-    cards: [
-        {
-            type: Types.ObjectId;
-            ref: string;
-        },
-    ];
+    cards: {
+        type: Types.ObjectId;
+        ref: string;
+    }[];
 }
 
 const quizSchema = new Schema<IQuiz>({

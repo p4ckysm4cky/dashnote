@@ -1,7 +1,8 @@
+// ts-node ./src/scripts/test.ts
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import { newQuiz, fetchAllQuiz, fetchSpecificQuiz } from '../services/quiz';
-// ts-node ./src/scripts/test.ts
+import { newCard } from '../services/card';
 
 const url = process.env.MONGODB_URI;
 
@@ -23,6 +24,12 @@ function testFetchSpecificQuiz(id: string) {
     });
 }
 
+function testNewCard(quizId: string, term: string, description: string) {
+    newCard(quizId, term, description).then((card) => {
+        console.log(card);
+    });
+}
+
 mongoose
     .connect(url!)
     .then(() => {
@@ -31,3 +38,5 @@ mongoose
     .catch((error) => {
         console.log('error connecting to MongoDB:', error.message);
     });
+
+testNewCard('63143a064af5a62491327ab1', 'Card term', 'Card description');

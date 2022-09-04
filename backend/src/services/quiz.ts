@@ -20,11 +20,6 @@ export const fetchAllQuiz = async (): Promise<QuizSchema[]> => {
 };
 
 export const fetchSpecificQuiz = async (id: string) => {
-    try {
-        const aQuiz = await Quiz.findById(id);
-        return quizToSchema(aQuiz!);
-    } catch (e) {
-        console.log(e);
-        return null;
-    }
+    const aQuiz = await Quiz.findById(id);
+    return aQuiz ? quizToSchema(aQuiz) : null;
 };

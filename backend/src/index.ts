@@ -2,8 +2,6 @@ import { readFileSync } from 'node:fs';
 import { ApolloServer } from 'apollo-server';
 import { resolvers } from './resolvers/resolvers';
 import 'dotenv/config';
-import { Quiz } from './models/quiz';
-import { Card } from './models/card';
 import mongoose from 'mongoose';
 
 const url = process.env.MONGODB_URI;

@@ -1,5 +1,4 @@
 import { Document, Schema, model, Types } from 'mongoose';
-import { Quiz } from './quiz';
 
 export interface ICard extends Document {
     term: string;

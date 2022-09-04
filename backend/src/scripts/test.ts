@@ -6,8 +6,8 @@ import { newQuiz, fetchAllQuiz, fetchSpecificQuiz } from '../services/quiz';
 const url = process.env.MONGODB_URI;
 
 function testNewQuiz(name: string, description: string) {
-    newQuiz(name, description).then(() => {
-        console.log('newQuiz ran');
+    newQuiz(name, description).then((quiz) => {
+        console.log(quiz);
     });
 }
 
@@ -31,7 +31,3 @@ mongoose
     .catch((error) => {
         console.log('error connecting to MongoDB:', error.message);
     });
-
-testFetchSpecificQuiz('63141b3793ef90a16d4a6e56');
-
-mongoose.connection.close();

@@ -3,16 +3,14 @@ import { HydratedDocument } from 'mongoose';
 import { quizToSchema } from '../mappers.ts/quizMapper';
 import { Quiz as QuizSchema } from '../resolvers/resolvers-types';
 
-export const newQuiz = async (
-    name: string,
-    description: string,
-): Promise<void> => {
+export const newQuiz = async (name: string, description: string) => {
     const aQuiz: HydratedDocument<IQuiz> = new Quiz({
         name,
         description,
         cards: [],
     });
-    await aQuiz.save();
+    const savedQuiz = await aQuiz.save();
+    return quizToSchema(savedQuiz);
 };
 
 export const fetchAllQuiz = async (): Promise<QuizSchema[]> => {

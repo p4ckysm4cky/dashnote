@@ -1,6 +1,6 @@
 import { Resolvers } from './resolvers-types';
-import { fetchAllQuiz, fetchSpecificQuiz } from '../services/quiz';
-import { newQuiz } from '../services/quiz';
+import { fetchAllQuiz, fetchSpecificQuiz, newQuiz } from '../services/quiz';
+import { newCard } from '../services/card';
 
 export const resolvers: Resolvers = {
     Query: {
@@ -15,6 +15,10 @@ export const resolvers: Resolvers = {
         newQuiz: async (_, { name, description }) => {
             await newQuiz(name, description);
             return await fetchAllQuiz();
+        },
+        addCard: async (_, { quizId, term, answer }) => {
+            await newCard(quizId, term, answer);
+            return await fetchSpecificQuiz(quizId);
         },
     },
 };

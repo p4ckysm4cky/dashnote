@@ -4,6 +4,7 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -27,7 +28,12 @@ export type Query = {
   /** Returns all quiz */
   allQuiz: Array<Quiz>;
   /** Returns a specific quiz */
-  quiz: Quiz;
+  quiz?: Maybe<Quiz>;
+};
+
+
+export type QueryQuizArgs = {
+  id: Scalars['ID'];
 };
 
 export type Quiz = {
@@ -135,7 +141,7 @@ export type CardResolvers<ContextType = any, ParentType extends ResolversParentT
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   allQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType>;
-  quiz?: Resolver<ResolversTypes['Quiz'], ParentType, ContextType>;
+  quiz?: Resolver<Maybe<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<QueryQuizArgs, 'id'>>;
 }>;
 
 export type QuizResolvers<ContextType = any, ParentType extends ResolversParentTypes['Quiz'] = ResolversParentTypes['Quiz']> = ResolversObject<{

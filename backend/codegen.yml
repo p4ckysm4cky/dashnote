@@ -1,4 +1,5 @@
 schema: src/schemas/**/*.graphql
+defaultMapper: Partial<{T}>
 generates:
     ./src/resolvers/resolvers-types.ts:
         config:

@@ -1,4 +1,5 @@
 import { Document, Schema, model, Types } from 'mongoose';
+import { Card } from './card';
 
 export interface IQuiz extends Document {
     name: string;
@@ -15,7 +16,7 @@ const quizSchema = new Schema<IQuiz>({
     cards: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Card',
+            ref: Card, // Modified because populate literally won't run
         },
     ],
 });

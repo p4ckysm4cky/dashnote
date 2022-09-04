@@ -20,3 +20,13 @@ export const fetchAllQuiz = async (): Promise<QuizSchema[]> => {
     const returnArray = quizArray.map((quiz) => quizToSchema(quiz));
     return returnArray;
 };
+
+export const fetchSpecificQuiz = async (id: string) => {
+    try {
+        const aQuiz = await Quiz.findById(id);
+        return quizToSchema(aQuiz!);
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+};

@@ -5,6 +5,17 @@ type Query {
     quiz(id: ID!): Quiz
 }
 
+type Mutation {
+    "Creates in new quiz with empty array"
+    newQuiz(name: String!, description: String!): [Quiz!]!
+    "Adds card to a quiz"
+    addCard(quizId: ID!, term: String!, answer: String!): Quiz!
+    "Delete quiz"
+    deleteQuiz(quizId: ID!): [Quiz!]!
+    "Delete card"
+    deleteCard(cardId: ID!): Quiz!
+}
+
 type Quiz {
     id: ID!
     name: String!

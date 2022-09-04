@@ -23,6 +23,41 @@ export type Card = {
   term: Scalars['String'];
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  /** Adds card to a quiz */
+  addCard: Quiz;
+  /** Delete card */
+  deleteCard: Quiz;
+  /** Delete quiz */
+  deleteQuiz: Array<Quiz>;
+  /** Creates in new quiz with empty array */
+  newQuiz: Array<Quiz>;
+};
+
+
+export type MutationAddCardArgs = {
+  answer: Scalars['String'];
+  quizId: Scalars['ID'];
+  term: Scalars['String'];
+};
+
+
+export type MutationDeleteCardArgs = {
+  cardId: Scalars['ID'];
+};
+
+
+export type MutationDeleteQuizArgs = {
+  quizId: Scalars['ID'];
+};
+
+
+export type MutationNewQuizArgs = {
+  description: Scalars['String'];
+  name: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   /** Returns all quiz */
@@ -117,6 +152,7 @@ export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Card: ResolverTypeWrapper<Card>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   Quiz: ResolverTypeWrapper<Quiz>;
   String: ResolverTypeWrapper<Scalars['String']>;
@@ -127,6 +163,7 @@ export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean'];
   Card: Card;
   ID: Scalars['ID'];
+  Mutation: {};
   Query: {};
   Quiz: Quiz;
   String: Scalars['String'];
@@ -137,6 +174,13 @@ export type CardResolvers<ContextType = any, ParentType extends ResolversParentT
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   term?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+  addCard?: Resolver<ResolversTypes['Quiz'], ParentType, ContextType, RequireFields<MutationAddCardArgs, 'answer' | 'quizId' | 'term'>>;
+  deleteCard?: Resolver<ResolversTypes['Quiz'], ParentType, ContextType, RequireFields<MutationDeleteCardArgs, 'cardId'>>;
+  deleteQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationDeleteQuizArgs, 'quizId'>>;
+  newQuiz?: Resolver<Array<ResolversTypes['Quiz']>, ParentType, ContextType, RequireFields<MutationNewQuizArgs, 'description' | 'name'>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
@@ -154,6 +198,7 @@ export type QuizResolvers<ContextType = any, ParentType extends ResolversParentT
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Card?: CardResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Quiz?: QuizResolvers<ContextType>;
 }>;

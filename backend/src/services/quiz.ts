@@ -12,3 +12,8 @@ export const newQuiz = async (
     });
     await aQuiz.save();
 };
+
+export const fetchAllQuiz = async (): Promise<IQuiz[]> => {
+    const notes: Array<IQuiz> = await Quiz.find({});
+    return notes;
+};

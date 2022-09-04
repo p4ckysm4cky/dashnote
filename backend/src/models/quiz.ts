@@ -1,6 +1,6 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
-export interface IQuiz {
+export interface IQuiz extends mongoose.Document {
     name: string;
     description: string;
     cards: [

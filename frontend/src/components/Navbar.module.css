@@ -1,0 +1,13 @@
+.logo {
+    width: 250px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    .logo {
+        width: 200px;
+    }
+}

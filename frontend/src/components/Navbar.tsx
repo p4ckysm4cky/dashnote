@@ -7,7 +7,11 @@ const Navbar = () => {
         <nav>
             <div className={styles.container}>
                 <Link to="/">
-                    <img className={styles.logo} src={logo} />
+                    <img
+                        className={styles.logo}
+                        src={logo}
+                        alt="Dashnote logo"
+                    />
                 </Link>
             </div>
         </nav>

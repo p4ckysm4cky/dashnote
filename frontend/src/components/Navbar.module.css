@@ -2,6 +2,12 @@
     width: 250px;
 }
 
+.container {
+    -webkit-box-shadow: 0 4px 6px -6px rgb(92, 92, 92);
+    -moz-box-shadow: 0 4px 6px -6px rgb(92, 92, 92);
+    box-shadow: 0 4px 6px -6px rgb(92, 92, 92);
+}
+
 @media (max-width: 768px) {
     .container {
         display: flex;

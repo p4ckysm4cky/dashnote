@@ -4,6 +4,12 @@
     padding: 2px 16px;
     height: 250px;
     width: 200px;
+    margin: 15px;
+    transition: background-color 500ms, color 500ms;
+}
+
+.container:hover {
+    background-color: #f7f7f7;
 }
 
 .textLink {
@@ -17,6 +23,7 @@
         box-sizing: border-box;
         border-radius: 0px;
         height: 150px;
+        margin: 0px;
     }
 
     .name {

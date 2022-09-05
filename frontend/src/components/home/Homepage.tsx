@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import allQuizQuery from '../../backendGql/queries/allQuizQuery';
-import { QuizFrame } from './QuizFrame';
+import { QuizFrameGallery } from './QuizFrameGallery';
 
 const Homepage = () => {
     const { loading, error, data } = useQuery(allQuizQuery);
@@ -9,7 +9,7 @@ const Homepage = () => {
 
     return (
         <div>
-            <QuizFrame {...data.allQuiz[0]} />
+            <QuizFrameGallery quizArray={data.allQuiz} />
         </div>
     );
 };

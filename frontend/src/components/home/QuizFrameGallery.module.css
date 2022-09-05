@@ -1,0 +1,13 @@
+.container {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: block;
+        padding: 0px;
+    }
+}

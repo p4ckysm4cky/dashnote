@@ -1,6 +1,7 @@
 .myButton {
-    width: 80px;
-    height: 30px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .myButton:hover {

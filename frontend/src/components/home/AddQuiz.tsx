@@ -7,12 +7,9 @@ import { useMutation } from '@apollo/client';
 export const AddQuiz = (props: { setStateFn: (array: any) => void }) => {
     const [nameInput, SetNameInput] = useState('');
     const [descriptionInput, setDescriptionInput] = useState('');
-    const [mutateFunction, { data, loading, error }] = useMutation(
-        newQuizMutation,
-        {
-            variables: { name: nameInput, description: descriptionInput },
-        },
-    );
+    const [mutateFunction, { data }] = useMutation(newQuizMutation, {
+        variables: { name: nameInput, description: descriptionInput },
+    });
     useEffect(() => {
         if (data) {
             props.setStateFn(data.newQuiz);

@@ -1,6 +1,5 @@
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import allQuizQuery from '../../backendGql/queries/allQuizQuery';
-import newQuizMutation from '../../backendGql/mutations/newQuizMutation';
 import { QuizFrameGallery } from './QuizFrameGallery';
 import AddQuiz from './AddQuiz';
 import { useEffect, useState } from 'react';

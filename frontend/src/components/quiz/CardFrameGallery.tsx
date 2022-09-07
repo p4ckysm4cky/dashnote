@@ -7,11 +7,18 @@ export type cardItemType = {
     answer: string;
 };
 
-export const CardFrameGallery = (props: { cardArray: cardItemType[] }) => {
+export const CardFrameGallery = (props: {
+    cardArray: cardItemType[];
+    setStateFn: (value: any) => void;
+}) => {
     return (
         <div className={styles.container}>
             {props.cardArray.map((card) => (
-                <CardFrame key={card.id} {...card} />
+                <CardFrame
+                    key={card.id}
+                    {...card}
+                    setStateFn={props.setStateFn}
+                />
             ))}
         </div>
     );

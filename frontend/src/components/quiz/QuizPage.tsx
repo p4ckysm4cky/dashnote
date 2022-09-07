@@ -23,7 +23,10 @@ export const QuizPage = () => {
         <div>
             <p>{JSON.stringify(clientData)}</p>
             {clientData ? (
-                <CardFrameGallery cardArray={clientData['cards']} />
+                <CardFrameGallery
+                    cardArray={clientData['cards']}
+                    setStateFn={setClientData}
+                />
             ) : (
                 <p>No cards</p>
             )}

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import specificQuizQuery from '../../backendGql/queries/specificQuizQuery';
 import AddCard from './AddCard';
 import { CardFrameGallery } from './CardFrameGallery';
+import CardDisplay from './CardDisplay';
 
 export const QuizPage = () => {
     const { quizId } = useParams();
@@ -21,7 +22,11 @@ export const QuizPage = () => {
 
     return (
         <div>
-            <p>{JSON.stringify(clientData)}</p>
+            <CardDisplay
+                term="Hello World"
+                answer="The quick brown fox jumps over the lazy dog"
+                isFlipped={false}
+            />
             {clientData ? (
                 <CardFrameGallery
                     cardArray={clientData['cards']}

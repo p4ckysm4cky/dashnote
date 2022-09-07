@@ -1,7 +1,7 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import Homepage from './components/home/Homepage';
 import { Routes, Route } from 'react-router-dom';
+import { QuizPage } from './components/quiz/QuizPage';
 
 function App() {
     return (
@@ -9,6 +9,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Homepage />} />
+                <Route path="/quiz/:quizId" element={<QuizPage />} />
             </Routes>
         </div>
     );

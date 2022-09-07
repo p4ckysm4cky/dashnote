@@ -5,7 +5,7 @@ import newQuizMutation from '../../backendGql/mutations/newQuizMutation';
 import { useMutation } from '@apollo/client';
 
 export const AddQuiz = (props: { setStateFn: (array: any) => void }) => {
-    const [nameInput, SetNameInput] = useState('');
+    const [nameInput, setNameInput] = useState('');
     const [descriptionInput, setDescriptionInput] = useState('');
     const [mutateFunction, { data }] = useMutation(newQuizMutation, {
         variables: { name: nameInput, description: descriptionInput },
@@ -22,7 +22,7 @@ export const AddQuiz = (props: { setStateFn: (array: any) => void }) => {
                 type="text"
                 placeholder="Quiz name"
                 value={nameInput}
-                onChange={(e) => SetNameInput(e.target.value)}
+                onChange={(e) => setNameInput(e.target.value)}
             />
             <input
                 className={styles.searchBar}
@@ -36,6 +36,8 @@ export const AddQuiz = (props: { setStateFn: (array: any) => void }) => {
                 buttonName={'Add Quiz'}
                 fn={() => {
                     mutateFunction();
+                    setNameInput('');
+                    setDescriptionInput('');
                 }}
             />
         </div>

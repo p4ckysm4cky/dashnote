@@ -2,6 +2,9 @@
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
+    background-color: #1d7484;
+    color: white;
+    border: none;
 }
 
 .myButton:hover {

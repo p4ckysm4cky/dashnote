@@ -39,10 +39,9 @@ export const AddCard = (props: {
                 onChange={(e) => setAnswerInput(e.target.value)}
             />
             <CustomButton
-                className={styles.inputBar}
+                className={styles.customButton}
                 buttonName={'Add card'}
                 fn={() => {
-                    // Call mutation here
                     mutateFunction();
                     setTermInput('');
                     setAnswerInput('');

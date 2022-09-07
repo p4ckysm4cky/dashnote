@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    /* border: 1px solid black; */
+    margin: 10px 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.innerContainer {
+    width: 250px;
+    font-size: 19px;
+    text-align: center;
+    padding: 8px;
+}
+
+.rhsTextColor {
+    color: #1d7484;
+    font-weight: bold;
+}
+
+.customButton {
+    margin-left: auto;
+    align-self: center;
+}

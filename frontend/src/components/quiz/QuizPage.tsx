@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import specificQuizQuery from '../../backendGql/queries/specificQuizQuery';
 import AddCard from './AddCard';
+import { CardFrameGallery } from './CardFrameGallery';
 
 export const QuizPage = () => {
     const { quizId } = useParams();
@@ -20,7 +21,12 @@ export const QuizPage = () => {
 
     return (
         <div>
-            {JSON.stringify(clientData)}
+            <p>{JSON.stringify(clientData)}</p>
+            {clientData ? (
+                <CardFrameGallery cardArray={clientData['cards']} />
+            ) : (
+                <p>No cards</p>
+            )}
             <AddCard quizId={quizId!} setStateFn={setClientData} />
         </div>
     );

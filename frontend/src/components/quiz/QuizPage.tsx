@@ -6,6 +6,7 @@ import AddCard from './AddCard';
 import { CardFrameGallery } from './CardFrameGallery';
 import CardDisplayControl from './CardDisplayControl';
 import { CardDisplayControlType } from './CardDisplayControl';
+import DeleteButton from './DeleteButton';
 
 export const QuizPage = () => {
     const { quizId } = useParams();
@@ -39,6 +40,7 @@ export const QuizPage = () => {
                 <div></div>
             )}
             <AddCard quizId={quizId!} setStateFn={setClientData} />
+            <DeleteButton quizId={quizId!} />
         </div>
     );
 };

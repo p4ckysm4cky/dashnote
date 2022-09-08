@@ -5,8 +5,11 @@
 ## Todo
 
 - [ ] Fix issue with text updating too fast when cardDisplay transitions
+- [ ] Allow for add quiz to submit using 'enter' key
 
  
+
+***
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

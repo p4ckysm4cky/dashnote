@@ -5,8 +5,9 @@ export const CardDisplay = (props: {
     term: string;
     answer: string;
     isFlipped: boolean;
+    setIsFlipped: (bool: boolean) => void;
 }) => {
-    const [isFlipped, setIsFlipped] = useState(!props.isFlipped);
+    const { isFlipped, setIsFlipped } = props;
     const [containerStyle, setContainerStyle] = useState(styles.flipCard);
     const handleClick = () => {
         if (isFlipped) {
@@ -17,8 +18,12 @@ export const CardDisplay = (props: {
         setIsFlipped(!isFlipped);
     };
     useEffect(() => {
-        handleClick();
-    }, []);
+        if (!isFlipped) {
+            setContainerStyle(styles.flipCard);
+        } else {
+            setContainerStyle(`${styles.flipCard} ${styles.showBack}`);
+        }
+    }, [isFlipped]);
     return (
         <div className={containerStyle} onClick={handleClick}>
             <div className={styles.flipCardInner}>

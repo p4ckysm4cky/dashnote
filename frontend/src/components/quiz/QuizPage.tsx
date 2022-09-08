@@ -4,11 +4,14 @@ import { useEffect, useState } from 'react';
 import specificQuizQuery from '../../backendGql/queries/specificQuizQuery';
 import AddCard from './AddCard';
 import { CardFrameGallery } from './CardFrameGallery';
-import CardDisplay from './CardDisplay';
+import CardDisplayControl from './CardDisplayControl';
+import { CardDisplayControlType } from './CardDisplayControl';
 
 export const QuizPage = () => {
     const { quizId } = useParams();
-    const [clientData, setClientData] = useState(null);
+    const [clientData, setClientData] = useState<CardDisplayControlType>({
+        cards: [],
+    });
     const { loading, error, data } = useQuery(specificQuizQuery, {
         variables: { quizId },
     });
@@ -22,18 +25,18 @@ export const QuizPage = () => {
 
     return (
         <div>
-            <CardDisplay
-                term="Hello World"
-                answer="The quick brown fox jumps over the lazy dog"
-                isFlipped={false}
-            />
+            {clientData!.cards.length > 0 ? (
+                <CardDisplayControl cards={clientData!['cards']} />
+            ) : (
+                <p>No cards</p>
+            )}
             {clientData ? (
                 <CardFrameGallery
                     cardArray={clientData['cards']}
                     setStateFn={setClientData}
                 />
             ) : (
-                <p>No cards</p>
+                <div></div>
             )}
             <AddCard quizId={quizId!} setStateFn={setClientData} />
         </div>

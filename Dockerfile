@@ -23,4 +23,5 @@ RUN npm run build
 
 # run server
 WORKDIR /usr/src/app/backend/
-CMD ["node", "./build/index.js"]
+ENTRYPOINT ["node"]
+CMD [ "./build/index.js"]

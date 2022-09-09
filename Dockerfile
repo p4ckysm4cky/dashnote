@@ -1,14 +1,24 @@
 FROM node:16
-WORKDIR /usr/src/app
-COPY . .
+
 # build frontend
 WORKDIR /usr/src/app/frontend
+COPY ./frontend/package.json ./
+COPY ./frontend/package-lock.json ./
 RUN npm ci
-RUN npm run build
 
 # build backend
 WORKDIR /usr/src/app/backend
+COPY ./backend/package.json ./
+COPY ./backend/package-lock.json ./
 RUN npm ci
+
+WORKDIR /usr/src/app
+COPY . .
+
+WORKDIR /usr/src/app/frontend
+RUN npm run build
+
+WORKDIR /usr/src/app/backend
 RUN npm run build
 
 # run server

@@ -3,7 +3,6 @@ import { HydratedDocument } from 'mongoose';
 import { quizToSchema } from '../mappers/quizMapper';
 import { Quiz as QuizSchema } from '../resolvers/resolvers-types';
 import { ICard, Card } from '../models/card';
-import { deleteCard } from './card';
 
 export const newQuiz = async (name: string, description: string) => {
     const aQuiz: HydratedDocument<IQuiz> = new Quiz({

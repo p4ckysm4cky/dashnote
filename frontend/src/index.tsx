@@ -4,13 +4,12 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-const BACKEND_URI = process.env.REACT_APP_BACKEND_URI;
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
 );
 const client = new ApolloClient({
-    uri: BACKEND_URI,
+    uri: '/graphql',
     cache: new InMemoryCache(),
 });
 root.render(
